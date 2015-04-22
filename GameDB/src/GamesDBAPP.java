@@ -13,6 +13,7 @@ public class GamesDBAPP {
 		//Lanzamos la ventana Vistaapp
 		VistaApp primerobjeto= new VistaApp();
 		primerobjeto.setVisible(true);
+		
 
 		
 		

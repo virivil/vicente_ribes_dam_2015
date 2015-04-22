@@ -75,7 +75,7 @@ public class VistaPrincipal extends JFrame {
 				JLabel lblNewLabel = new JLabel("New label");
 				lblNewLabel.setBounds(9, 5, 205, 193);
 				PanelPrincipal.add(lblNewLabel);
-				lblNewLabel.setIcon(new ImageIcon("/Users/vince/Documents/git/vicente_rv_prog_2014_2015/GameDB/src/Vista/fotocarnet.jpeg"));
+				lblNewLabel.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/images/fotocarnet.jpeg")));
 				
 				
 				//creo que el problema es que Vistaapp está esperando un JPanel ...
