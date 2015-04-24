@@ -25,7 +25,7 @@ public class VistaApp extends JFrame {
 	
 	public JPanel CPPadre;
 
-	//metodo de la vistaPrincipal, es decir, de la ventana contenedora.
+	//metodo constructor de la vistaPrincipal, es decir, de la ventana contenedora.
 
 	public VistaApp() {
 
@@ -54,11 +54,13 @@ public class VistaApp extends JFrame {
 	menuBar.add(Menu);
 				
 	
-	//aquí creo un objeto de nombre prueba de tipo VistaPrincipal y lo llamo mediante el constructor del mismo nombre, tras luego utilizar un metodo especificio creado para que devuelva un objeto tipo JPanel.		
+	//aquí creo un objeto de nombre prueba de clase VistaPrincipal y lo llamo mediante el constructor del mismo nombre, tras luego utilizar un metodo especificio creado para que devuelva un objeto tipo JPanel.		
 	
 	VistaPrincipal prueba = new VistaPrincipal();
 	CPPadre.add(	prueba.Devuelvepanel(), "panelprincipal");
 	prueba.Devuelvepanel().setLayout(null);
+	
+	
 
 
 			
