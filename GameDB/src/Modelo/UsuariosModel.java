@@ -30,6 +30,7 @@ public class UsuariosModel {
 		objetousuarios = new ArrayList<String>();
 			}
 	
+	
 	public UsuariosModel(Connection conexion){    
 		this.conexion=conexion;
 			}

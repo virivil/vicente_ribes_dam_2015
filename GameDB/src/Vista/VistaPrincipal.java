@@ -79,6 +79,7 @@ public class VistaPrincipal extends JFrame {
 							
 							//combobox
 							
+							
 							JComboBox cmbUsuario = new JComboBox();
 							cmbUsuario.setBounds(31, 224, 166, 27);
 							PanelPrincipal.add(cmbUsuario);

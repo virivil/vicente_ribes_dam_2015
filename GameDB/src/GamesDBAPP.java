@@ -16,7 +16,6 @@ public class GamesDBAPP {
 		
 		
 		
-		
 		//Generamos el objeto gamedb para que se conecte a la bbdd que hemos creado previamente. Mediante el metodo le pasamos los datos
 		gameDB=ConexionDB.getInstance("localhost","gamedb","root","grabemivida") ; //aquí la instanciamos=laconvertimos en objeto
 		
@@ -27,7 +26,6 @@ public class GamesDBAPP {
 			
 		else {System.out.println("ERROR EN LA CONEXION");
 		}
-		
 		
 		//Lanzamos la ventana Vistaapp
 				VistaApp primerobjeto= new VistaApp();

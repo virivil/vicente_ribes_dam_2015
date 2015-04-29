@@ -22,7 +22,6 @@ public class VistaApp extends JFrame {
 	
 	
 	
-	
 	public JPanel CPPadre;
 
 	//metodo constructor de la vistaPrincipal, es decir, de la ventana contenedora.

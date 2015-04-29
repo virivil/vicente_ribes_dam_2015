@@ -8,6 +8,7 @@ public class ConexionDB {
 	// DATOS DE LA CONEXION
 	static final String CONTROLADOR_MYSQL= "com.mysql.jdbc.Driver";
 	
+	
 	//DATOS DE LA BBDD
 	private String host;
 	private String bbdd;
