@@ -1,4 +1,5 @@
 package Vista;
+import Modelo.UsuariosModel;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -30,6 +31,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
+import Modelo.ConexionDB;
 import Modelo.UsuariosModel;
 
 
@@ -44,6 +46,8 @@ public class VistaPrincipal extends JFrame {
 				
 				//datos para la carga de usuarios
 				UsuariosModel objetousuarios = new UsuariosModel();
+				static UsuariosModel mUsuarios;
+
 
 				
 				//metodo constructor (de entrada)  a la Vista Principal(panel)
@@ -94,13 +98,19 @@ public class VistaPrincipal extends JFrame {
 							
 							//rellenamos los datos del comboBox
 							
+							mUsuarios= new UsuariosModel();
+							mUsuarios.getUsuarios();
 							
+						//System.out.println("paso por vista principal");
+							//objetousuarios.getUsuarios();
+							
+							/**
 							Iterator<String> it= objetousuarios.getUsuarios().iterator();
 							while(it.hasNext()){
 								cmbUsuario.addItem((String)it.next());
 							}
-							
-							
+								
+							**/
 							} 
 				
 	

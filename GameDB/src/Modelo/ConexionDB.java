@@ -19,9 +19,9 @@ public class ConexionDB {
 		private Connection conexion = null;// maneja la conexion
 	
 	//Instancia unica
-	public static ConexionDB instance = null ;
+	public static  ConexionDB instance = null ;
 	
-	public ConexionDB(String HOST,String BBDD,String USER,String PASS) {
+	private ConexionDB(String HOST,String BBDD,String USER,String PASS) {
 		this.host=HOST;
 		this.bbdd=BBDD;
 		this.user=USER;
