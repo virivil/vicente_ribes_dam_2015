@@ -20,9 +20,9 @@ public class ConexionDB {
 		private Connection conexion = null;// maneja la conexion
 	
 	//Instancia unica
-	public static  ConexionDB instance = null ;
+	private static  ConexionDB instance = null ;
 	
-	private ConexionDB(String HOST,String BBDD,String USER,String PASS) {
+	private ConexionDB(String HOST,String BBDD,String USER,String PASS) { //aquí estamos privatizando el constructor
 		this.host=HOST;
 		this.bbdd=BBDD;
 		this.user=USER;
@@ -59,6 +59,7 @@ public class ConexionDB {
 	}
 	
 	public Connection getConexion(){
+		
 		return this.conexion;
 	}
 

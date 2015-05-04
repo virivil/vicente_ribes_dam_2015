@@ -27,14 +27,12 @@ public class GamesDBAPP {
 		else {System.out.println("ERROR EN LA CONEXION");
 		}
 		
+		
 		//Lanzamos la ventana Vistaapp
 				VistaApp primerobjeto= new VistaApp();
 				primerobjeto.setVisible(true);
 				
-		
+				
 	}
 
-	
-	
-	
 }

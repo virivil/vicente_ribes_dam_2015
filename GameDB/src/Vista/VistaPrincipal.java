@@ -45,8 +45,7 @@ public class VistaPrincipal extends JFrame {
 				private JPasswordField passwordfield;
 				
 				//datos para la carga de usuarios
-				UsuariosModel objetousuarios = new UsuariosModel();
-				static UsuariosModel mUsuarios;
+				UsuariosModel cargadeusuarios = new UsuariosModel();
 
 
 				
@@ -99,25 +98,17 @@ public class VistaPrincipal extends JFrame {
 							
 							//rellenamos los datos del comboBox
 							
-							mUsuarios= new UsuariosModel();
-							mUsuarios.getUsuarios();
+						
 							
-						//System.out.println("paso por vista principal");
-							//objetousuarios.getUsuarios();
-							
-							/**
-							Iterator<String> it= objetousuarios.getUsuarios().iterator();
+							Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
 							while(it.hasNext()){
 								cmbUsuario.addItem((String)it.next());
-							}
-								
-							**/
+								}
+							
+						
 							} 
 				
-	
-				//creo que el problema es que Vistaapp está esperando un JPanel ...
-
-				
+					
 	public JPanel Devuelvepanel(){ 				//creo un metodo que devuelva el JPanel (dicho así parece fácil, me ha costado horas saber que %$&// pasaba )
 		return PanelPrincipal;
 	}

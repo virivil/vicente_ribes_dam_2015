@@ -14,20 +14,23 @@ public class UsuariosModel {
 	
 	private  static String USUARIOS_SEL="SELECT usuario FROM usuarios";	
 	private  static String USUARIO_COL="usuario";
+	ConexionDB cdb ;
 		
 	//Conexion
 	private Connection conexion = null;
-	Statement instruccion = null;
+	Statement instruccion = null; // Instrucción de consulta ???
 	ResultSet conjuntoResultados = null;
 	
 	
-	//declaro variable usuarios
+	//declaro objetousuarios
 	
 	private ArrayList<String> objetousuarios = null;
 	
 	public UsuariosModel(){    
-				//inicializamos el array de usuarios
+				//inicializamos el array de objetousuarios
 		objetousuarios = new ArrayList<String>();
+		cdb = ConexionDB.getInstance("localhost","gamedb","root","grabemivida"); 
+		conexion = cdb.getConexion();
 			}
 	
 	
@@ -40,25 +43,32 @@ public class UsuariosModel {
 	public ArrayList getUsuarios(){   //METODO GET PARA OBTENER LOS USUARIO
 		try{
 			
-			System.out.println("intenta mandar la query");
-
-			//instruccion = this.conexion.createStatement(); //preparamos el canal para hacer ls preguntas
-			
-			System.out.println("intenta mandar la query2");
-
-			
-			conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //realizamos la pregunta , la query
-
-			//Listaremos por pantalla los datos
-			while( conjuntoResultados.next() ) {
+			System.out.println("realiza el try1");
 				
-				System.out.print(conjuntoResultados.getString(USUARIO_COL)+";");
+					
+				//instruccion = ConexionDB.getConexion(); //prepara la conexion
+			instruccion = conexion.createStatement(); //prepara la conexion
+
+	
+			System.out.println("realiza el try2");
+
+				conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //esta linea ejecuta la petición a la bbdd.
+
+			System.out.println("realiza el try3");
+
+				//Listaremos por pantalla los datos
+				while( conjuntoResultados.next() ) {
+					
+					objetousuarios.add(conjuntoResultados.getString(USUARIO_COL));
+					
+						
+				}// fin de while
 				
-				
-			}// fin de while
-			return objetousuarios;
+
+				return objetousuarios;
+
 		}
-		
+		 
 		
 		catch( SQLException excepcionSql ) 
 		{
@@ -68,7 +78,10 @@ public class UsuariosModel {
 		}
 		
 		finally{
-			try{
+			System.out.println(" llega al finally");
+
+
+	 try{
 				System.out.println("Voy a cerrar la conexion");
 
 				conjuntoResultados.close(); //cerramos conexion con la base de datos
@@ -79,8 +92,9 @@ public class UsuariosModel {
 			{
 				excepcionSql.printStackTrace();
 			}
-		}
 		
+		
+		}
 		
 	}
 	
