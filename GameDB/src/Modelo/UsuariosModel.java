@@ -12,13 +12,13 @@ import com.mysql.jdbc.ResultSetMetaData;
 public class UsuariosModel {
 	//Consulta que devuelve el nombre de usuarios
 	
-	private  static String USUARIOS_SEL="SELECT usuario FROM usuarios";	
+	private  static String USUARIOS_SEL="SELECT usuario FROM usuarios";	// estos deben ser static final , constantes en  mayusculas!
 	private  static String USUARIO_COL="usuario";
 	ConexionDB cdb ;
 		
 	//Conexion
 	private Connection conexion = null;
-	Statement instruccion = null; // Instrucción de consulta ???
+	Statement instruccion = null; // Instrucción de consulta 
 	ResultSet conjuntoResultados = null;
 	
 	
@@ -41,27 +41,14 @@ public class UsuariosModel {
 	
 	
 	public ArrayList getUsuarios(){   //METODO GET PARA OBTENER LOS USUARIO
-		try{
-			
-			System.out.println("realiza el try1");
-				
-					
-				//instruccion = ConexionDB.getConexion(); //prepara la conexion
+		try{			
 			instruccion = conexion.createStatement(); //prepara la conexion
-
-	
-			System.out.println("realiza el try2");
-
-				conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //esta linea ejecuta la petición a la bbdd.
-
-			System.out.println("realiza el try3");
+			conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //esta linea ejecuta la petición a la bbdd.
 
 				//Listaremos por pantalla los datos
+			
 				while( conjuntoResultados.next() ) {
-					
-					objetousuarios.add(conjuntoResultados.getString(USUARIO_COL));
-					
-						
+				objetousuarios.add(conjuntoResultados.getString(USUARIO_COL));
 				}// fin de while
 				
 
@@ -78,12 +65,9 @@ public class UsuariosModel {
 		}
 		
 		finally{
-			System.out.println(" llega al finally");
 
 
 	 try{
-				System.out.println("Voy a cerrar la conexion");
-
 				conjuntoResultados.close(); //cerramos conexion con la base de datos
 				instruccion.close();
 				conexion.close(); //él no cierra la conexión... 
