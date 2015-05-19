@@ -23,7 +23,7 @@ public class VistaPrin extends JPanel {
 	
 
 	private JPasswordField passwordfield;
-	
+	private JComboBox cmbUsuario;
 	
 	
 
@@ -48,7 +48,7 @@ public class VistaPrin extends JPanel {
 				//combobox
 				
 				
-				JComboBox cmbUsuario = new JComboBox();
+				cmbUsuario = new JComboBox();
 				cmbUsuario.setBounds(22, 244, 187, 27);
 				add(cmbUsuario);
 				cmbUsuario.setToolTipText("Usuario");
@@ -75,12 +75,8 @@ public class VistaPrin extends JPanel {
 				Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
 				**/	
 					
-				
-			//	Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
-					
-				// carga de usuarios pasando por Controlador
-
-				MainController Objetocarga = MainController.getInstance() ;
+			
+			/**	MainController Objetocarga = MainController.getInstance() ;
 				Iterator Objetoiterador;
 				Objetoiterador = Objetocarga.CargarUsuarios();
 				
@@ -90,6 +86,7 @@ public class VistaPrin extends JPanel {
 					 cmbUsuario.addItem((String)Objetoiterador.next());
 					}
 				
+				**/
 				
 				//foto de nuestro mayorMono!
 				JLabel lblNewLabel = new JLabel("New label");
@@ -119,10 +116,13 @@ public class VistaPrin extends JPanel {
 				passwordfield.setBounds(22, 283, 187, 28);
 				add(passwordfield);
 				
-				
-				
-				
-				
-
 	}
+	
+	
+	public void cargaUsuarios(Iterator Objetoiterador){
+		while(Objetoiterador.hasNext()){
+			
+			 cmbUsuario.addItem((String)Objetoiterador.next());
+			}		
+	 }
 }

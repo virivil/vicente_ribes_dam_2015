@@ -74,13 +74,13 @@ public class MainController {
 			
 			//la hacemos visible
 			objetovistaapp.setVisible(true);
-			
+			this.showVistaPrin();
 		}
 		
 		//metodo al que llamamos para hacer visible el panel juegos
 		public void showVistaJuegos(){
 			
-			objetovistaapp.ShowJuegos(true);
+			objetovistaapp.ShowJuegos();
 			
 			/**CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
 			c.show( VistaApp.CPPadre , "paneljuegos");
@@ -90,11 +90,10 @@ public class MainController {
 		//metodo al que llamamos para hacer visible el panel VistaPrin
 		public void showVistaPrin(){
 			
-			objetovistaapp.ShowPrin(true);
+			objetovistaapp.ShowPrin(this.CargarUsuarios());
 			//objetovistaapp.ShowPrin(true);
 		
 		}
-		
 		
 	
        

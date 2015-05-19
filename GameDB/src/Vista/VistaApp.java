@@ -22,6 +22,7 @@ import Controlador.MainController;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class VistaApp extends JFrame {
@@ -32,9 +33,10 @@ public class VistaApp extends JFrame {
 	
 	//Instancia unica
 			private static VistaApp instance = null;
+			private VistaPrin objetopanelprin;
 			
 			
-
+/**
 			//Implementar SingleTon
 				public static VistaApp getInstance() {
 				      if(instance == null) {
@@ -42,7 +44,8 @@ public class VistaApp extends JFrame {
 				      }
 				      return instance;
 				}
-
+**/
+			
 	//metodo constructor de la vistaApp, es decir, de la ventana contenedora/exterior.
 
 	public VistaApp() {
@@ -56,7 +59,7 @@ public class VistaApp extends JFrame {
 		CPPadre.setLayout(new CardLayout(0, 0));
 
 	
-		VistaPrin objetopanelprin = new VistaPrin();
+		objetopanelprin = new VistaPrin();
 		CPPadre.add( objetopanelprin, "panelprin");
 		objetopanelprin.setVisible(true);
 		
@@ -108,13 +111,14 @@ public class VistaApp extends JFrame {
 				
 			}
 
-	public void ShowJuegos(boolean b) {
+	public void ShowJuegos() {
 		CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
 		c.show( VistaApp.CPPadre , "paneljuegos");
 			}
 
-	public void ShowPrin(boolean b) {
+	public void ShowPrin(Iterator Objetoiterador) {
 		CardLayout d=(CardLayout) VistaApp.CPPadre.getLayout();
+		objetopanelprin.cargaUsuarios(Objetoiterador);
 		d.show( VistaApp.CPPadre , "panelprin");		
 	}
 		

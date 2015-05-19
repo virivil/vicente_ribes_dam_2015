@@ -66,7 +66,7 @@ public class UsuariosModel {
 		
 		finally{
 
-
+/**
 	 try{
 				conjuntoResultados.close(); //cerramos conexion con la base de datos
 				instruccion.close();
@@ -76,7 +76,7 @@ public class UsuariosModel {
 			{
 				excepcionSql.printStackTrace();
 			}
-		
+		**/
 		
 		}
 		
