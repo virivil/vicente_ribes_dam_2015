@@ -29,6 +29,19 @@ public class VistaApp extends JFrame {
 	
 	
 	public static JPanel CPPadre;
+	
+	//Instancia unica
+			private static VistaApp instance = null;
+			
+			
+
+			//Implementar SingleTon
+				public static VistaApp getInstance() {
+				      if(instance == null) {
+				         instance = new VistaApp();
+				      }
+				      return instance;
+				}
 
 	//metodo constructor de la vistaApp, es decir, de la ventana contenedora/exterior.
 

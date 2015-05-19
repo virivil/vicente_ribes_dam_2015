@@ -29,23 +29,23 @@ public class VistaJuegos extends JPanel {
 		setLayout(null);
 		
 		JButton VJBoton2 = new JButton("Editar");
-		VJBoton2.setBounds(48, 341, 150, 29);
+		VJBoton2.setBounds(292, 349, 150, 29);
 		add(VJBoton2);
 		
 		JButton VJBoton1 = new JButton("Salvar");
-		VJBoton1.setBounds(248, 341, 150, 29);
+		VJBoton1.setBounds(292, 308, 150, 29);
 		add(VJBoton1);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(160, 74, 120, 50);
+		comboBox.setBounds(170, 58, 120, 50);
 		add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(296, 74, 120, 50);
+		comboBox_1.setBounds(306, 58, 120, 50);
 		add(comboBox_1);
 		
 		textField = new JTextField();
-		textField.setBounds(14, 84, 134, 28);
+		textField.setBounds(24, 68, 134, 28);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -54,42 +54,42 @@ public class VistaJuegos extends JPanel {
 		add(lblFiltros);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
-		lblNewLabel.setBounds(14, 56, 61, 16);
+		lblNewLabel.setBounds(24, 40, 61, 16);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Género");
-		lblNewLabel_1.setBounds(162, 56, 61, 16);
+		lblNewLabel_1.setBounds(172, 40, 61, 16);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Plataforma");
-		lblNewLabel_2.setBounds(300, 56, 116, 16);
+		lblNewLabel_2.setBounds(310, 40, 116, 16);
 		add(lblNewLabel_2);
 		
 		textField_Nombre = new JTextField();
-		textField_Nombre.setBounds(20, 211, 134, 28);
+		textField_Nombre.setBounds(292, 143, 134, 28);
 		add(textField_Nombre);
 		textField_Nombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(14, 183, 61, 16);
+		lblNombre.setBounds(296, 126, 61, 16);
 		add(lblNombre);
 		
 		JLabel lblGnero = new JLabel("Género");
-		lblGnero.setBounds(154, 183, 61, 16);
+		lblGnero.setBounds(296, 179, 61, 16);
 		add(lblGnero);
 		
 		textField_Genero = new JTextField();
 		textField_Genero.setColumns(10);
-		textField_Genero.setBounds(160, 211, 134, 28);
+		textField_Genero.setBounds(292, 194, 134, 28);
 		add(textField_Genero);
 		
 		JLabel lblPlataforma = new JLabel("Plataforma");
-		lblPlataforma.setBounds(296, 183, 102, 16);
+		lblPlataforma.setBounds(296, 234, 102, 16);
 		add(lblPlataforma);
 		
 		textField_Plataforma = new JTextField();
 		textField_Plataforma.setColumns(10);
-		textField_Plataforma.setBounds(302, 211, 134, 28);
+		textField_Plataforma.setBounds(296, 249, 134, 28);
 		add(textField_Plataforma);
 		
 		

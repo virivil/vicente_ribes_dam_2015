@@ -15,14 +15,14 @@ public class MainController {
 
 	//Atributos de bases de datos
 
-	final ConexionDB gameDB;
+	private ConexionDB gameDB;
 	
 	//Instancia unica
 		private static MainController instance = null;
 		
 		
 	//Vistas
-		VistaApp objetovistaapp;
+	private	VistaApp objetovistaapp;
 		
 	//Usuarios
 		
@@ -34,8 +34,9 @@ public class MainController {
 	//Generamos el objeto gamedb para que se conecte a la bbdd que hemos creado previamente. Mediante el metodo le pasamos los datos
 	gameDB=ConexionDB.getInstance("localhost","gamedb","root","grabemivida") ; //aquí la instanciamos=laconvertimos en objeto
 	
+	
 	if(gameDB.connectDB()==true) {
-		System.out.println("CONECTADOS CON EXITO");			
+		System.out.println("CONECTADOS CON EXITO");	
 	}	
 	else {System.out.println("ERROR EN LA CONEXION");
 	}
@@ -54,12 +55,24 @@ public class MainController {
 		      return instance;
 		}
 	
-		//metodo al que llamamos para hacer crear la ventana
+		
+		public Iterator<String> CargarUsuarios(){		
+			UsuariosModel cargadeusuarios = new UsuariosModel();
+			Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
+		return it; }
+		
+		
+		//metodo al que llamamos para crear la ventana principal
 		public void showVistaApp(){
-			usuarios=new UsuariosModel();
 			
 			//Lanzamos la ventana Vistaapp
 			objetovistaapp= new VistaApp();
+			
+			usuarios=new UsuariosModel();
+			
+			
+			
+			//la hacemos visible
 			objetovistaapp.setVisible(true);
 			
 		}
@@ -79,11 +92,10 @@ public class MainController {
 			
 			objetovistaapp.ShowPrin(true);
 			//objetovistaapp.ShowPrin(true);
-			
-			
-			
-					
+		
 		}
 		
+		
+	
        
 }

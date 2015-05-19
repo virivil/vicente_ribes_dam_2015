@@ -25,6 +25,7 @@ public class VistaPrin extends JPanel {
 	private JPasswordField passwordfield;
 	
 	
+	
 
 
 	
@@ -53,17 +54,40 @@ public class VistaPrin extends JPanel {
 				cmbUsuario.setToolTipText("Usuario");
 				
 				//llama a un metodo para que carge los usuarios.
-				
+				/** 
+				 * Para cargar los usuarios lo que hace es ; 
+				 * 1. Crea objeto cargausuarios del tipo UsuariosModel ()
+				 * 2. Utiliza metodo get usuarios del objeto creado previamente y se lo introduce en un Iterator llamado IT
+				 * 3. Comienza el proceso de carga. 
+				 * 4. utiliza un while ... mientras siga habiendo un siguiente en IT , añadelo.
+				 * 
+				 * la nueva opción debería ser:
+				 * 
+				 * 1. VistaPrin llama a un metodo de MainController que cree un objeto del tipo UsuariosModelo
+				 * 2. Utiliza metodo get usuarios del objeto creado previamente y se lo introduce en un Iterator llamado IT
+				 * 
+				 * 
+				 * 
+				 * 
+				 **/
 
-				//datos para la carga de usuarios
-				UsuariosModel cargadeusuarios = new UsuariosModel();
+				/**UsuariosModel cargadeusuarios = new UsuariosModel();
 				Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
-
-
-				//rellenamos los datos del comboBox	
-				while(it.hasNext()){
+				**/	
 					
-					 cmbUsuario.addItem((String)it.next());
+				
+			//	Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
+					
+				// carga de usuarios pasando por Controlador
+
+				MainController Objetocarga = MainController.getInstance() ;
+				Iterator Objetoiterador;
+				Objetoiterador = Objetocarga.CargarUsuarios();
+				
+				//rellenamos los datos del comboBox	
+				while(Objetoiterador.hasNext()){
+					
+					 cmbUsuario.addItem((String)Objetoiterador.next());
 					}
 				
 				
