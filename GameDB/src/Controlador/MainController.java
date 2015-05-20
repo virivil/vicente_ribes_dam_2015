@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Controlador.MainController;
+import Modelo.JuegosModel;
 import Modelo.UsuariosModel;
 import Modelo.ConexionDB;
 import Vista.VistaApp;
@@ -62,30 +63,34 @@ public class MainController {
 		return it; }
 		
 		
+		public Iterator<String> CargarJuegos(){		
+			JuegosModel cargadejuegos = new JuegosModel();
+			Iterator<String> it= cargadejuegos.getJuegos().iterator();
+		return it; }
+		
+		
 		//metodo al que llamamos para crear la ventana principal
 		public void showVistaApp(){
 			
 			//Lanzamos la ventana Vistaapp
-			objetovistaapp= new VistaApp();
-			
+			objetovistaapp= new VistaApp();			
 			usuarios=new UsuariosModel();
-			
-			
 			
 			//la hacemos visible
 			objetovistaapp.setVisible(true);
 			this.showVistaPrin();
 		}
 		
+		
+		
+		
 		//metodo al que llamamos para hacer visible el panel juegos
 		public void showVistaJuegos(){
 			
-			objetovistaapp.ShowJuegos();
+			objetovistaapp.ShowJuegos(this.CargarJuegos());
 			
-			/**CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
-			c.show( VistaApp.CPPadre , "paneljuegos");
-				**/		
 		}
+		
 		
 		//metodo al que llamamos para hacer visible el panel VistaPrin
 		public void showVistaPrin(){

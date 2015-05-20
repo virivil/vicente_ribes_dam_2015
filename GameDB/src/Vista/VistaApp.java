@@ -33,7 +33,9 @@ public class VistaApp extends JFrame {
 	
 	//Instancia unica
 			private static VistaApp instance = null;
-			private VistaPrin objetopanelprin;
+			private VistaPrin objetopanelprin;			
+			private VistaJuegos objetopaneljuegos;
+
 			
 			
 /**
@@ -105,14 +107,16 @@ public class VistaApp extends JFrame {
 
 		}
 	});
-	Principal.add(mntmPrincipal);
-	
-	
-				
+	Principal.add(mntmPrincipal);			
 			}
 
-	public void ShowJuegos() {
+//carga de los distintos paneles	
+	
+	public void ShowJuegos(Iterator<String> iteratorjuegos) {
 		CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
+		
+		objetopaneljuegos.cargaJuegos(iteratorjuegos);
+
 		c.show( VistaApp.CPPadre , "paneljuegos");
 			}
 
@@ -121,7 +125,10 @@ public class VistaApp extends JFrame {
 		objetopanelprin.cargaUsuarios(Objetoiterador);
 		d.show( VistaApp.CPPadre , "panelprin");		
 	}
-		
+	
+	
+	
+	
 	}
 	
 

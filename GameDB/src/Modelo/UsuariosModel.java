@@ -45,12 +45,12 @@ public class UsuariosModel {
 			instruccion = conexion.createStatement(); //prepara la conexion
 			conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //esta linea ejecuta la petición a la bbdd.
 
-				//Listaremos por pantalla los datos
+			//cargamos al objeto los datos
 			
 				while( conjuntoResultados.next() ) {
 				objetousuarios.add(conjuntoResultados.getString(USUARIO_COL));
 				}// fin de while
-				
+			
 
 				return objetousuarios;
 
