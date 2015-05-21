@@ -19,9 +19,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Modelo.Game;
+
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 
 public class VistaJuegos extends JPanel {
 	
@@ -36,8 +39,7 @@ public class VistaJuegos extends JPanel {
 	private JScrollPane scrollPane;
 	private JList list;
 	private DefaultListModel listModel;
-	private DefaultListModel game;
-
+	private Game game;
 
 	
 	public VistaJuegos() {
@@ -70,6 +72,14 @@ public class VistaJuegos extends JPanel {
 		JLabel lblFiltros = new JLabel("Filtros");
 		lblFiltros.setBounds(14, 23, 61, 16);
 		add(lblFiltros);
+		
+		
+	  
+		
+		
+		 scrollPane = new JScrollPane(list);
+	     scrollPane.setBounds(0, 0, 190, 247);
+		
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setBounds(24, 40, 61, 16);
@@ -111,55 +121,55 @@ public class VistaJuegos extends JPanel {
 		add(textField_Plataforma);
 		
 		JPanel panelJList = new JPanel();
-		panelJList.setBounds(24, 135, 256, 243);
+		panelJList.setBounds(24, 135, 255, 240);
 		add(panelJList);
-		panelJList.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelJList.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 5, 230, 230);
 		panelJList.add(scrollPane);
 		
-		JList list = new JList();
+		//JList list = new JList();
+		//list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 
 		//permite mayor control sobre el JList
-        listModel = new DefaultListModel();    
+		listModel = new DefaultListModel();    
         list = new JList(listModel);
         //Solo  permitmos selccionar un elemento cada vez
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-        scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(0, 0, 190, 247);
-        
-        
-
         //Evento para mostrar en los campos los datos
         list.addListSelectionListener(new ListSelectionListener() {
               public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                  //Cojo el juego seleccionado
-                  Game game=(Game)listModel.getElementAt(list.getSelectedIndex());
-                  //Coloco los datos en los campos
-                  textField_Nombre.setText(game.getNombre());
-                  textField_Genero.setText(game.getGenero());
-                  textField_Plataforma.setText(game.getPlataforma());
-              }
+                  if(listModel!=null){
+            	  //Cojo el juego seleccionado
+                	  Game game=(Game)listModel.getElementAt(list.getSelectedIndex());
+                	  //Coloco los datos en los campos
+                	  	textField_Nombre.setText(game.getNombre());
+                  		textField_Genero.setText(game.getGenero());
+                  		textField_Plataforma.setText(game.getPlataforma());
+                  }
+                  }
         });
-
-   
-    
+        scrollPane.add(list);
+        //porque aquí funciona
+        
+     //pero aquí no
 		
 	}
-        
+         
         
       //Al haber definido el modelo, los datos sobre el JList se realizará sobre el Modelo,
         //no sobre el JList
-        public void cargaJuegos(Iterator<String> iteratorjuegos){
-            Iterator<Game> it= iteratorjuegos.iterator();
+        public void cargaJuegos(ArrayList<Game>  juegos){
+            Iterator<Game> it= juegos.iterator();
             listModel.removeAllElements();
             
             while(it.hasNext()){
                 Game game=(Game)it.next();
                 //Añadimos el objeto Game en el modelo
-                listModel.addElement(game);
+                listModel.addElement(game.getNombre());
             }
 		
 

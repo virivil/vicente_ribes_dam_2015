@@ -15,11 +15,13 @@ public class GamesDBAPP {
 	
 	public static void main(String[] args) {
 		
-		
+		System.out.println("gamesdbapp llama a maincontroller");
+
 		//Arrancamos el controlador
 			MainController mController=MainController.getInstance();
+			
+			System.out.println("hemos vuelto a gamesdbapp");
 	
-					
 	}
 
 }

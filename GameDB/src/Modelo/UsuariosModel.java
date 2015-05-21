@@ -44,7 +44,7 @@ public class UsuariosModel {
 		try{			
 			instruccion = conexion.createStatement(); //prepara la conexion
 			conjuntoResultados = instruccion.executeQuery(USUARIOS_SEL); //esta linea ejecuta la petición a la bbdd.
-
+			objetousuarios.clear();
 			//cargamos al objeto los datos
 			
 				while( conjuntoResultados.next() ) {

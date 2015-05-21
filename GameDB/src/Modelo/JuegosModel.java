@@ -22,7 +22,7 @@ public class JuegosModel {
 
 		ConexionDB cdb ;
 			
-		//Conexion
+		//Conexion 
 		private Connection conexion = null;
 		Statement instruccion = null; // Instrucción de consulta 
 		ResultSet conjuntoResultados = null;
@@ -37,7 +37,6 @@ public class JuegosModel {
 			juegos = new ArrayList<Game>();
 			cdb = ConexionDB.getInstance("localhost","gamedb","root","grabemivida"); 
 			conexion = cdb.getConexion();
-			juegos=new ArrayList<Game>();
 				}
 		
 		
@@ -52,12 +51,12 @@ public class JuegosModel {
 				instruccion = conexion.createStatement(); //prepara la conexion
 				conjuntoResultados = instruccion.executeQuery(GAMES_SEL); //esta linea ejecuta la petición a la bbdd.
 				
-				juegos.clear(); este metodo hará que no se vuelva a cargar al volver a la ventana
+				juegos.clear(); //este metodo hará que no se vuelva a cargar al volver a la ventana
 				
 					//cargamos al objeto los datos
 				
 					while( conjuntoResultados.next() ) {
-						Game conjuntoResultados=new Game(
+						Game game=new Game(
 					conjuntoResultados.getInt(ID_COL),
 					conjuntoResultados.getString(NAME_COL),
 					conjuntoResultados.getString(GENRE_COL),

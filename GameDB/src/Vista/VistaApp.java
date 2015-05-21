@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuItem;
 
 import Controlador.MainController;
+import Modelo.Game;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -36,17 +37,7 @@ public class VistaApp extends JFrame {
 			private VistaPrin objetopanelprin;			
 			private VistaJuegos objetopaneljuegos;
 
-			
-			
-/**
-			//Implementar SingleTon
-				public static VistaApp getInstance() {
-				      if(instance == null) {
-				         instance = new VistaApp();
-				      }
-				      return instance;
-				}
-**/
+		
 			
 	//metodo constructor de la vistaApp, es decir, de la ventana contenedora/exterior.
 
@@ -60,14 +51,15 @@ public class VistaApp extends JFrame {
 		setContentPane(CPPadre);
 		CPPadre.setLayout(new CardLayout(0, 0));
 
-	
+		
 		objetopanelprin = new VistaPrin();
 		CPPadre.add( objetopanelprin, "panelprin");
 		objetopanelprin.setVisible(true);
+			
 		
-		
-		VistaJuegos objetopaneljuegos = new VistaJuegos();
+		objetopaneljuegos = new VistaJuegos();
 		CPPadre.add( objetopaneljuegos, "paneljuegos");
+
 
 		
 		
@@ -110,23 +102,34 @@ public class VistaApp extends JFrame {
 	Principal.add(mntmPrincipal);			
 			}
 
-//carga de los distintos paneles	
+//carga de los distintos paneles,recuerda, están fuera del constructor de vistaapp	
 	
-	public void ShowJuegos(Iterator<String> iteratorjuegos) {
-		CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
-		
-		objetopaneljuegos.cargaJuegos(iteratorjuegos);
-
-		c.show( VistaApp.CPPadre , "paneljuegos");
-			}
-
 	public void ShowPrin(Iterator Objetoiterador) {
+		System.out.println("cargamos el panel principal");
+
+		
 		CardLayout d=(CardLayout) VistaApp.CPPadre.getLayout();
+		//llamada a metodo para cargar los usuarios
 		objetopanelprin.cargaUsuarios(Objetoiterador);
 		d.show( VistaApp.CPPadre , "panelprin");		
 	}
 	
-	
+	public void ShowJuegos(ArrayList juegos) {
+			
+		//objetopaneljuegos = new VistaJuegos();
+
+			System.out.println("cargamos el panel de Juegos");
+
+			CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
+			
+			objetopaneljuegos.cargaJuegos(juegos);
+
+			c.show( VistaApp.CPPadre , "paneljuegos");
+				}
+
+		
+
+
 	
 	
 	}
