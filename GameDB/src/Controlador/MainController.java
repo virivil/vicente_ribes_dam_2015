@@ -97,7 +97,7 @@ public class MainController {
 			juegos= new JuegosModel();
 			
 			
-			//la hacemos visible
+			//la hacemos visible, por defecto solo puede haber una entrada show, el resto de show serán por listeners. 
 
 			objetovistaapp.setVisible(true);
 			
@@ -105,9 +105,7 @@ public class MainController {
 
 			this.showVistaPrin();
 			
-			System.out.println("llamamos a showVistaJuegos");
-
-			this.showVistaJuegos();
+			
 		}
 		
 		
@@ -128,7 +126,7 @@ public class MainController {
 		public void showVistaJuegos(){
 			System.out.println("en el metodo showVistaJuegos,lanzamos metodo de objetovistajuegos");
 
-			//esta llamada es incorrecta....
+			
 			objetovistaapp.ShowJuegos(this.CargarJuegos());
 
 		}

@@ -77,8 +77,8 @@ public class VistaJuegos extends JPanel {
 	  
 		
 		
-		 scrollPane = new JScrollPane(list);
-	     scrollPane.setBounds(0, 0, 190, 247);
+		// scrollPane = new JScrollPane(list);
+	     //scrollPane.setBounds(0, 0, 190, 247);
 		
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
@@ -132,12 +132,17 @@ public class VistaJuegos extends JPanel {
 		//JList list = new JList();
 		//list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
+		
+		JList list_1 = new JList();
+		scrollPane.setColumnHeaderView(list_1);
 
 		//permite mayor control sobre el JList
-		listModel = new DefaultListModel();    
-        list = new JList(listModel);
-        //Solo  permitmos selccionar un elemento cada vez
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listModel = new DefaultListModel();
+		JList list = new JList(listModel);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		scrollPane = new JScrollPane(list);
+		scrollPane.setBounds(0, 0, 194, 247);
 		
         //Evento para mostrar en los campos los datos
         list.addListSelectionListener(new ListSelectionListener() {
@@ -169,7 +174,9 @@ public class VistaJuegos extends JPanel {
             while(it.hasNext()){
                 Game game=(Game)it.next();
                 //Añadimos el objeto Game en el modelo
-                listModel.addElement(game.getNombre());
+                listModel.addElement(game);
+    			System.out.println(game.getNombre());
+
             }
 		
 

@@ -116,7 +116,7 @@ public class VistaApp extends JFrame {
 	
 	public void ShowJuegos(ArrayList juegos) {
 			
-		//objetopaneljuegos = new VistaJuegos();
+		    //objetopaneljuegos = new VistaJuegos();
 
 			System.out.println("cargamos el panel de Juegos");
 
