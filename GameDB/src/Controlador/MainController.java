@@ -17,6 +17,8 @@ public class MainController {
 	
 	//Atributos de bases de datos
 
+	public Autenticar auth;
+
 	private ConexionDB gameDB;
 	
 	//Instancia unica
@@ -85,7 +87,7 @@ public class MainController {
 			
 			System.out.println("creamos el objetovistaapp");
 
-			objetovistaapp= new VistaApp();	
+			objetovistaapp=  VistaApp.getInstance();	
 			
 			
 			System.out.println("creamos el objeto UsuariosModelo");
@@ -102,9 +104,10 @@ public class MainController {
 			objetovistaapp.setVisible(true);
 			
 			System.out.println("llamamos a showVistaPrin");
-
-			this.showVistaPrin();
 			
+			auth = new Autenticar();
+			this.showVistaPrin();
+
 			
 		}
 		
@@ -113,10 +116,10 @@ public class MainController {
 		
 		//metodo al que llamamos para hacer visible el panel VistaPrin
 		public void showVistaPrin(){
-			System.out.println("en el metodo showVistaPrin,lanzamos metodo de objetovistaapp");
+			//en el metodo showVistaPrin,lanzamos metodo de objetovistaapp
 
-			objetovistaapp.ShowPrin(this.CargarUsuarios());
-		
+			objetovistaapp.CargaPanelPrin(this.CargarUsuarios());
+
 		}
 		
 
@@ -124,12 +127,28 @@ public class MainController {
 		
 		//metodo al que llamamos para hacer visible el panel juegos
 		public void showVistaJuegos(){
-			System.out.println("en el metodo showVistaJuegos,lanzamos metodo de objetovistajuegos");
-
 			
-			objetovistaapp.ShowJuegos(this.CargarJuegos());
+			//en el metodo showVistaJuegos,lanzamos metodo de objetovistajuegos
+			if (this.auth.estaLogado()){
+				objetovistaapp.CargaPanelJuegos(this.CargarJuegos());
+				objetovistaapp.MensajePorConsola("Sesión iniciada");
+
+			} else {
+				
+				//aquí mensaje de error por pantalla
+				objetovistaapp.MensajePorConsola("Debes logearte antes");
+			};
+		}
+
+
+
+		public void logar() {
+			this.auth.comprobarUser();
+			//this.showVistaJuegos();
+			objetovistaapp.MensajePorConsola("logeado!");
 
 		}
 	
+		
        
 }

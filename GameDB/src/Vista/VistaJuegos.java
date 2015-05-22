@@ -19,11 +19,19 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Controlador.MainController;
 import Modelo.Game;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.awt.Font;
+
+import javax.swing.AbstractListModel;
+
+import java.awt.SystemColor;
+
+import javax.swing.UIManager;
 
 
 public class VistaJuegos extends JPanel {
@@ -39,21 +47,22 @@ public class VistaJuegos extends JPanel {
 	private JScrollPane scrollPane;
 	private JList list;
 	private DefaultListModel listModel;
-	private Game game;
+	
+	private static VistaJuegos instance = null;
 
 	
-	public VistaJuegos() {
+	private VistaJuegos() {
 		
 		
 		
 		setLayout(null);
 		
 		JButton VJBoton2 = new JButton("Editar");
-		VJBoton2.setBounds(292, 349, 150, 29);
+		VJBoton2.setBounds(292, 330, 150, 29);
 		add(VJBoton2);
 		
 		JButton VJBoton1 = new JButton("Salvar");
-		VJBoton1.setBounds(292, 308, 150, 29);
+		VJBoton1.setBounds(292, 289, 150, 29);
 		add(VJBoton1);
 		
 		JComboBox comboBox = new JComboBox();
@@ -73,14 +82,6 @@ public class VistaJuegos extends JPanel {
 		lblFiltros.setBounds(14, 23, 61, 16);
 		add(lblFiltros);
 		
-		
-	  
-		
-		
-		// scrollPane = new JScrollPane(list);
-	     //scrollPane.setBounds(0, 0, 190, 247);
-		
-		
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setBounds(24, 40, 61, 16);
 		add(lblNewLabel);
@@ -94,6 +95,8 @@ public class VistaJuegos extends JPanel {
 		add(lblNewLabel_2);
 		
 		textField_Nombre = new JTextField();
+		textField_Nombre.setEnabled(false);
+		textField_Nombre.setEditable(false);
 		textField_Nombre.setBounds(292, 143, 134, 28);
 		add(textField_Nombre);
 		textField_Nombre.setColumns(10);
@@ -107,6 +110,8 @@ public class VistaJuegos extends JPanel {
 		add(lblGnero);
 		
 		textField_Genero = new JTextField();
+		textField_Genero.setEnabled(false);
+		textField_Genero.setEditable(false);
 		textField_Genero.setColumns(10);
 		textField_Genero.setBounds(292, 194, 134, 28);
 		add(textField_Genero);
@@ -116,33 +121,34 @@ public class VistaJuegos extends JPanel {
 		add(lblPlataforma);
 		
 		textField_Plataforma = new JTextField();
+		textField_Plataforma.setEnabled(false);
+		textField_Plataforma.setEditable(false);
 		textField_Plataforma.setColumns(10);
 		textField_Plataforma.setBounds(296, 249, 134, 28);
 		add(textField_Plataforma);
 		
 		JPanel panelJList = new JPanel();
 		panelJList.setBounds(24, 135, 255, 240);
-		add(panelJList);
 		panelJList.setLayout(null);
-		
+		add(panelJList);
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 5, 230, 230);
+		scrollPane.setBounds(6, 6, 230, 210);
 		panelJList.add(scrollPane);
 		
-		//JList list = new JList();
-		//list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(list);
 		
-		JList list_1 = new JList();
-		scrollPane.setColumnHeaderView(list_1);
-
+		
 		//permite mayor control sobre el JList
 		listModel = new DefaultListModel();
-		JList list = new JList(listModel);
+		JList list = new JList(listModel) ;
+		
+		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		scrollPane = new JScrollPane(list);
-		scrollPane.setBounds(0, 0, 194, 247);
+		//scrollPane = new JScrollPane(list);
+		//scrollPane.setBounds(0, 0, 194, 247);
+        //scrollPane.add(list);
+
 		
         //Evento para mostrar en los campos los datos
         list.addListSelectionListener(new ListSelectionListener() {
@@ -157,28 +163,32 @@ public class VistaJuegos extends JPanel {
                   }
                   }
         });
-        scrollPane.add(list);
         //porque aquí funciona
         
      //pero aquí no
 		
+	}
+	
+	public static VistaJuegos getInstance() {
+	      if(instance == null) {
+	         instance = new VistaJuegos();
+	      }
+	      return instance;
 	}
          
         
       //Al haber definido el modelo, los datos sobre el JList se realizará sobre el Modelo,
         //no sobre el JList
         public void cargaJuegos(ArrayList<Game>  juegos){
-            Iterator<Game> it= juegos.iterator();
+          
+        	Iterator<Game> it= juegos.iterator();
             listModel.removeAllElements();
             
-            while(it.hasNext()){
-                Game game=(Game)it.next();
-                //Añadimos el objeto Game en el modelo
-                listModel.addElement(game);
-    			System.out.println(game.getNombre());
-
-            }
-		
-
-	}
+	            while(it.hasNext()){
+	                Game game=(Game)it.next();
+	                //Añadimos el objeto Game en el modelo
+	                listModel.addElement(game);
+		            };
+	       	}
+        
 }

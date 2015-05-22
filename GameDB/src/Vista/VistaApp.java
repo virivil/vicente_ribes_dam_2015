@@ -24,41 +24,59 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JTextField;
 
 
 public class VistaApp extends JFrame {
+		
+			private String msg = "";
+			public static JPanel BLO;
+			public static JPanel CPPadre;
 	
-	
-	
-	public static JPanel CPPadre;
-	
-	//Instancia unica
+			//Instancia unica		
 			private static VistaApp instance = null;
+			
 			private VistaPrin objetopanelprin;			
 			private VistaJuegos objetopaneljuegos;
+			private JTextField consolaapp;
+
+
+
 
 		
 			
 	//metodo constructor de la vistaApp, es decir, de la ventana contenedora/exterior.
 
-	public VistaApp() {
+	private VistaApp() {
 
-		
+		//c=(CardLayout) CPPadre.getLayout();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 482, 448);
-		CPPadre = new JPanel();
-		CPPadre.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(CPPadre);
+		BLO = new JPanel();
+		BLO.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(BLO);
+		BLO.setLayout(new BorderLayout(0, 0));
+		
+		JPanel CPPadre = new JPanel();
+		BLO.add(CPPadre);
 		CPPadre.setLayout(new CardLayout(0, 0));
-
 		
-		objetopanelprin = new VistaPrin();
-		CPPadre.add( objetopanelprin, "panelprin");
-		objetopanelprin.setVisible(true);
-			
+				
+				objetopanelprin = new VistaPrin();
+				CPPadre.add(objetopanelprin, "panelprin");
+				objetopanelprin.setLayout(null);
+				
 		
-		objetopaneljuegos = new VistaJuegos();
-		CPPadre.add( objetopaneljuegos, "paneljuegos");
+				objetopaneljuegos = VistaJuegos.getInstance();
+				CPPadre.add(objetopaneljuegos, "paneljuegos");
+		
+		consolaapp = new JTextField();
+		consolaapp.setEnabled(false);
+		consolaapp.setEditable(false);
+		BLO.add(consolaapp, BorderLayout.SOUTH);
+		consolaapp.setColumns(10);
+				objetopanelprin.setVisible(true);
 
 
 		
@@ -78,6 +96,7 @@ public class VistaApp extends JFrame {
 	
 	JMenu Juego = new JMenu("Juego");
 	menuBar.add(Juego);
+	
 	
 	
 		//añadimos a los desplegables de los items.
@@ -102,35 +121,57 @@ public class VistaApp extends JFrame {
 	Principal.add(mntmPrincipal);			
 			}
 
+			//Implementar SingleTon
+	public static VistaApp getInstance() {
+			      if(instance == null) {
+			         instance = new VistaApp();
+			      }
+			      return instance;
+			}
+	
 //carga de los distintos paneles,recuerda, están fuera del constructor de vistaapp	
 	
-	public void ShowPrin(Iterator Objetoiterador) {
-		System.out.println("cargamos el panel principal");
-
+	public void CargaPanelPrin(Iterator Objetoiterador) {
+					//cargamos el panel principal
+					//llamada a metodo para cargar los usuarios
+					objetopanelprin.cargaUsuarios(Objetoiterador);	
+					
+					objetopanelprin.setVisible(true);
+					objetopaneljuegos.setVisible(false);
+					
+					//objetopanelprin.show(); si utilizo este método se deja botones por medio...
+				}
+	
+	public void CargaPanelJuegos(ArrayList juegos) {
+			
+					//cargamos el panel de Juegos
 		
-		CardLayout d=(CardLayout) VistaApp.CPPadre.getLayout();
-		//llamada a metodo para cargar los usuarios
-		objetopanelprin.cargaUsuarios(Objetoiterador);
-		d.show( VistaApp.CPPadre , "panelprin");		
+					objetopaneljuegos.cargaJuegos(juegos);	
+		
+					objetopaneljuegos.setVisible(true);
+					objetopanelprin.setVisible(false);
+					//objetopaneljuegos.show();
+
+				}
+	
+	public void MensajePorConsola(String mensaje){
+					this.consolaapp.setText(mensaje);
+				}
+				
+	
+	
+	/**public void Hazvisibleprin(){
+		CardLayout c=(CardLayout) CPPadre.getLayout();
+		c.show( VistaApp.CPPadre , "panelprin");
+
 	}
 	
-	public void ShowJuegos(ArrayList juegos) {
-			
-		    //objetopaneljuegos = new VistaJuegos();
+	public void Hazvisiblejuegos(){
+		CardLayout c=(CardLayout) CPPadre.getLayout();
+		c.show( VistaApp.CPPadre , "paneljuegos");
 
-			System.out.println("cargamos el panel de Juegos");
-
-			CardLayout c=(CardLayout) VistaApp.CPPadre.getLayout();
-			
-			objetopaneljuegos.cargaJuegos(juegos);
-
-			c.show( VistaApp.CPPadre , "paneljuegos");
-				}
-
-		
-
-
-	
+	}
+	**/
 	
 	}
 	

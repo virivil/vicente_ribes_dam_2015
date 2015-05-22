@@ -38,6 +38,12 @@ public class VistaPrin extends JPanel {
 				add(btnPerfil);
 				
 				JButton btnLogin = new JButton("Login");
+				btnLogin.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						MainController.getInstance().logar();
+					
+					}
+				});
 				btnLogin.setBounds(32, 319, 79, 29);
 				add(btnLogin);
 				
@@ -120,6 +126,9 @@ public class VistaPrin extends JPanel {
 	
 	
 	public void cargaUsuarios(Iterator Objetoiterador){
+		
+		cmbUsuario.removeAllItems();
+		
 		while(Objetoiterador.hasNext()){
 			
 			 cmbUsuario.addItem((String)Objetoiterador.next());
