@@ -28,21 +28,14 @@ public class ConexionDB {
 		this.user=USER;
 		this.pass=PASS;
 		this.url="jdbc:mysql://"+this.host+"/"+this.bbdd;
-		System.out.println("al haber instanciado ConexionDB , la primera vez llama al metodo ConexionDB(4datos)");
-
 	}
 	
-	//Implementar SingleTon
+	//Implementar SingleTon: 
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 		
-		System.out.println("hemos pedido una instancia del objeto ConexionDB");
-
 	      if(instance == null) {
 	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
-	 		System.out.println("creamos  ConexionDB por primera vez");
-
 	      }
-			System.out.println("devolvemos el ConexionDB");
 	      return instance;
 
 	   }

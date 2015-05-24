@@ -10,18 +10,11 @@ import Vista.VistaApp;
 
 public class GamesDBAPP {
 
-	
-
-	
 	public static void main(String[] args) {
 		
-		System.out.println("gamesdbapp llama a maincontroller");
-
-		//Arrancamos el controlador
+		//Arrancamos el controlador: gamesdbapp pide una instancia de MainController
 			MainController mController=MainController.getInstance();
-			
-			System.out.println("hemos vuelto a gamesdbapp");
-	
+				
 	}
 
 }

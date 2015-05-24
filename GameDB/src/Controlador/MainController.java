@@ -17,7 +17,7 @@ public class MainController {
 	
 	//Atributos de bases de datos
 
-	public Autenticar auth;
+	//public Autenticar auth;
 
 	private ConexionDB gameDB;
 	
@@ -33,9 +33,12 @@ public class MainController {
 		UsuariosModel usuarios;
 		JuegosModel juegos;
 	
+	//autenticacion
+		public Autenticar auth = new Autenticar();
+
 	
 	private MainController() {
-		System.out.println("acabamos de instanciar MainController");
+		//acabamos de instanciar MainController mediante metodo privado gracias a Singleton
 		
 	//Generamos el objeto gamedb para que se conecte a la bbdd que hemos creado previamente. Mediante el metodo le pasamos los datos
 	gameDB=ConexionDB.getInstance("localhost","gamedb","root","grabemivida") ; //aquí la instanciamos=laconvertimos en objeto
@@ -48,7 +51,6 @@ public class MainController {
 	}
 	
 	this.showVistaApp();
-		
 	}
 	
 	
@@ -80,34 +82,29 @@ public class MainController {
 		
 		//metodo al que llamamos para crear la ventana principal
 		public void showVistaApp(){
-			System.out.println("comienza metodo showVistaApp");
-
 			
 			//Lanzamos la ventana Vistaapp
-			
-			System.out.println("creamos el objetovistaapp");
 
 			objetovistaapp=  VistaApp.getInstance();	
 			
 			
-			System.out.println("creamos el objeto UsuariosModelo");
+			// creamos el objeto usuarios de la case UsuariosModel
 
 			usuarios=new UsuariosModel();
 			
-			System.out.println("creamos el objeto juegos");
+			// creamos el objeto juegos de la clase JuegosModel
 
 			juegos= new JuegosModel();
 			
 			
-			//la hacemos visible, por defecto solo puede haber una entrada show, el resto de show serán por listeners. 
+			//hacemos visible por defecto solo puede haber una entrada show
 
 			objetovistaapp.setVisible(true);
 			
-			System.out.println("llamamos a showVistaPrin");
+			//llamamos a showVistaPrin
 			
-			auth = new Autenticar();
+								//auth = new Autenticar();
 			this.showVistaPrin();
-
 			
 		}
 		
@@ -144,7 +141,6 @@ public class MainController {
 
 		public void logar() {
 			this.auth.comprobarUser();
-			//this.showVistaJuegos();
 			objetovistaapp.MensajePorConsola("logeado!");
 
 		}

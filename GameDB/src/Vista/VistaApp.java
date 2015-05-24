@@ -49,8 +49,6 @@ public class VistaApp extends JFrame {
 
 	private VistaApp() {
 
-		//c=(CardLayout) CPPadre.getLayout();
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 482, 448);
 		BLO = new JPanel();
@@ -64,21 +62,17 @@ public class VistaApp extends JFrame {
 		
 				
 				objetopanelprin = new VistaPrin();
-				CPPadre.add(objetopanelprin, "panelprin");
-				objetopanelprin.setLayout(null);
-				
+				CPPadre.add(objetopanelprin, "panelprin");				
 		
 				objetopaneljuegos = VistaJuegos.getInstance();
 				CPPadre.add(objetopaneljuegos, "paneljuegos");
 		
+				// la consola es la linea inferior que muestra mensajes
 		consolaapp = new JTextField();
 		consolaapp.setEnabled(false);
 		consolaapp.setEditable(false);
 		BLO.add(consolaapp, BorderLayout.SOUTH);
 		consolaapp.setColumns(10);
-				objetopanelprin.setVisible(true);
-
-
 		
 		
 		//añado la barra del menu
@@ -103,8 +97,7 @@ public class VistaApp extends JFrame {
 	
 	JMenuItem mntmPanelJuegos = new JMenuItem("Panel Juegos");
 	mntmPanelJuegos.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			
+		public void actionPerformed(ActionEvent e) {			
 			MainController.getInstance().showVistaJuegos();
 		}
 	});
@@ -115,7 +108,6 @@ public class VistaApp extends JFrame {
 	mntmPrincipal.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			MainController.getInstance().showVistaPrin();
-
 		}
 	});
 	Principal.add(mntmPrincipal);			
@@ -138,8 +130,8 @@ public class VistaApp extends JFrame {
 					
 					objetopanelprin.setVisible(true);
 					objetopaneljuegos.setVisible(false);
-					
-					//objetopanelprin.show(); si utilizo este método se deja botones por medio...
+					//objetopanelprin.show(true);
+
 				}
 	
 	public void CargaPanelJuegos(ArrayList juegos) {
@@ -150,8 +142,8 @@ public class VistaApp extends JFrame {
 		
 					objetopaneljuegos.setVisible(true);
 					objetopanelprin.setVisible(false);
-					//objetopaneljuegos.show();
-
+					//objetopaneljuegos.show(true);
+	
 				}
 	
 	public void MensajePorConsola(String mensaje){

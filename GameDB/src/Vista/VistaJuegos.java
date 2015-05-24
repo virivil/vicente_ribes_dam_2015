@@ -48,7 +48,7 @@ public class VistaJuegos extends JPanel {
 	private JList list;
 	private DefaultListModel listModel;
 	
-	private static VistaJuegos instance = null;
+	private static VistaJuegos instance;
 
 	
 	private VistaJuegos() {
