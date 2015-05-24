@@ -64,22 +64,6 @@ public class UsuariosModel {
 
 		}
 		
-		finally{
-
-/**
-	 try{
-				conjuntoResultados.close(); //cerramos conexion con la base de datos
-				instruccion.close();
-				conexion.close(); //él no cierra la conexión... 
-			}
-			catch( SQLException excepcionSql ) 
-			{
-				excepcionSql.printStackTrace();
-			}
-		**/
-		
-		}
-		
 	}
 	
 	

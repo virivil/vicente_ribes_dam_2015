@@ -64,10 +64,10 @@ public class VistaApp extends JFrame {
 				objetopanelprin = new VistaPrin();
 				CPPadre.add(objetopanelprin, "panelprin");				
 		
-				objetopaneljuegos = VistaJuegos.getInstance();
+				objetopaneljuegos = new VistaJuegos();
 				CPPadre.add(objetopaneljuegos, "paneljuegos");
 		
-				// la consola es la linea inferior que muestra mensajes
+				// la consola: muestra mensajes en la base de la ventana. 
 		consolaapp = new JTextField();
 		consolaapp.setEnabled(false);
 		consolaapp.setEditable(false);
@@ -97,7 +97,8 @@ public class VistaApp extends JFrame {
 	
 	JMenuItem mntmPanelJuegos = new JMenuItem("Panel Juegos");
 	mntmPanelJuegos.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {			
+		public void actionPerformed(ActionEvent e) {
+			
 			MainController.getInstance().showVistaJuegos();
 		}
 	});
@@ -108,6 +109,7 @@ public class VistaApp extends JFrame {
 	mntmPrincipal.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			MainController.getInstance().showVistaPrin();
+
 		}
 	});
 	Principal.add(mntmPrincipal);			
@@ -150,21 +152,6 @@ public class VistaApp extends JFrame {
 					this.consolaapp.setText(mensaje);
 				}
 				
-	
-	
-	/**public void Hazvisibleprin(){
-		CardLayout c=(CardLayout) CPPadre.getLayout();
-		c.show( VistaApp.CPPadre , "panelprin");
-
-	}
-	
-	public void Hazvisiblejuegos(){
-		CardLayout c=(CardLayout) CPPadre.getLayout();
-		c.show( VistaApp.CPPadre , "paneljuegos");
-
-	}
-	**/
-	
 	}
 	
 

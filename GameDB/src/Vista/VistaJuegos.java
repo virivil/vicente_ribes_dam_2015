@@ -48,10 +48,10 @@ public class VistaJuegos extends JPanel {
 	private JList list;
 	private DefaultListModel listModel;
 	
-	private static VistaJuegos instance;
+	//public static VistaJuegos instance;
 
 	
-	private VistaJuegos() {
+	public VistaJuegos() {
 		
 		
 		
@@ -145,10 +145,6 @@ public class VistaJuegos extends JPanel {
 		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		//scrollPane = new JScrollPane(list);
-		//scrollPane.setBounds(0, 0, 194, 247);
-        //scrollPane.add(list);
-
 		
         //Evento para mostrar en los campos los datos
         list.addListSelectionListener(new ListSelectionListener() {
@@ -163,19 +159,18 @@ public class VistaJuegos extends JPanel {
                   }
                   }
         });
-        //porque aquí funciona
         
-     //pero aquí no
 		
 	}
 	
+/**	//singleton para VistaJuegos
 	public static VistaJuegos getInstance() {
 	      if(instance == null) {
 	         instance = new VistaJuegos();
 	      }
 	      return instance;
 	}
-         
+   **/   
         
       //Al haber definido el modelo, los datos sobre el JList se realizará sobre el Modelo,
         //no sobre el JList
@@ -190,5 +185,8 @@ public class VistaJuegos extends JPanel {
 	                listModel.addElement(game);
 		            };
 	       	}
+                
+        
+        
         
 }

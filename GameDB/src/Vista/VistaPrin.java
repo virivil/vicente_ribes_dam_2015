@@ -26,8 +26,6 @@ public class VistaPrin extends JPanel {
 	private JComboBox cmbUsuario;
 	
 	
-
-
 	
 	//metodo constructor (de entrada)  a la Vista Prin(panel)
 	public  VistaPrin() {
@@ -60,49 +58,14 @@ public class VistaPrin extends JPanel {
 				cmbUsuario.setToolTipText("Usuario");
 				
 				//llama a un metodo para que carge los usuarios.
-				/** 
-				 * Para cargar los usuarios lo que hace es ; 
-				 * 1. Crea objeto cargausuarios del tipo UsuariosModel ()
-				 * 2. Utiliza metodo get usuarios del objeto creado previamente y se lo introduce en un Iterator llamado IT
-				 * 3. Comienza el proceso de carga. 
-				 * 4. utiliza un while ... mientras siga habiendo un siguiente en IT , añadelo.
-				 * 
-				 * la nueva opción debería ser:
-				 * 
-				 * 1. VistaPrin llama a un metodo de MainController que cree un objeto del tipo UsuariosModelo
-				 * 2. Utiliza metodo get usuarios del objeto creado previamente y se lo introduce en un Iterator llamado IT
-				 * 
-				 * 
-				 * 
-				 * 
-				 **/
-
-				/**UsuariosModel cargadeusuarios = new UsuariosModel();
-				Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
-				**/	
-					
-			
-			/**	MainController Objetocarga = MainController.getInstance() ;
-				Iterator Objetoiterador;
-				Objetoiterador = Objetocarga.CargarUsuarios();
 				
-				//rellenamos los datos del comboBox	
-				while(Objetoiterador.hasNext()){
-					
-					 cmbUsuario.addItem((String)Objetoiterador.next());
-					}
-				
-				**/
 				
 				//foto de nuestro mayorMono!
 				JLabel lblNewLabel = new JLabel("New label");
 				lblNewLabel.setBounds(6, 6, 226, 225);
 				add(lblNewLabel);
 				lblNewLabel.setIcon(new ImageIcon(VistaPrin.class.getResource("/images/fotocarnet.jpeg")));
-				
-
-						
-						
+								
 						//botones
 						
 				
