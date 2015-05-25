@@ -15,20 +15,20 @@ import Vista.VistaPrin;
 
 public class MainController {
 	
-	//Atributos de bases de datos
+//Atributos :
 
-	//public Autenticar auth;
+	//BBDD;
 
-	private ConexionDB gameDB;
+		private ConexionDB gameDB;
 	
 	//Instancia unica
 		private static MainController instance = null;
 		
 		
 	//Vistas
-	private	VistaApp objetovistaapp;
+		private	VistaApp objetovistaapp;
 		
-	//Usuarios
+	//Modelos
 		
 		UsuariosModel usuarios;
 		JuegosModel juegos;
@@ -38,10 +38,10 @@ public class MainController {
 
 	
 	private MainController() {
-		//acabamos de instanciar MainController mediante metodo privado gracias a Singleton
+		//Instanciar MainController mediante metodo privado. 
 		
 	//Generamos el objeto gamedb para que se conecte a la bbdd que hemos creado previamente. Mediante el metodo le pasamos los datos
-	gameDB=ConexionDB.getInstance("localhost","gamedb","root","grabemivida") ; //aquí la instanciamos=laconvertimos en objeto
+	gameDB=ConexionDB.getInstance("localhost","gamedb","root","grabemivida") ; 
 	
 	
 	if(gameDB.connectDB()==true) {
@@ -64,6 +64,7 @@ public class MainController {
 		}
 	
 		
+		//metodo para cargar los usuarios
 		public Iterator<String> CargarUsuarios(){	
 			System.out.println("cargamos usuarios");
 
@@ -71,7 +72,7 @@ public class MainController {
 			Iterator<String> it= cargadeusuarios.getUsuarios().iterator();
 		return it; }
 		
-		
+		//metodo para cargar los juegos
 		public ArrayList<Game> CargarJuegos(){		
 			System.out.println("cargamos usuarios");
 			
@@ -84,26 +85,20 @@ public class MainController {
 		public void showVistaApp(){
 			
 			//Lanzamos la ventana Vistaapp
-
 			objetovistaapp=  VistaApp.getInstance();	
 			
 			
 			// creamos el objeto usuarios de la case UsuariosModel
-
 			usuarios=new UsuariosModel();
 			
 			// creamos el objeto juegos de la clase JuegosModel
-
 			juegos= new JuegosModel();
 			
 			
 			//hacemos visible por defecto solo puede haber una entrada show
-
 			objetovistaapp.setVisible(true);
 			
 			//llamamos a showVistaPrin
-			
-								//auth = new Autenticar();
 			this.showVistaPrin();
 			
 		}
@@ -114,7 +109,6 @@ public class MainController {
 		//metodo al que llamamos para hacer visible el panel VistaPrin
 		public void showVistaPrin(){
 			//en el metodo showVistaPrin,lanzamos metodo de objetovistaapp
-
 			objetovistaapp.CargaPanelPrin(this.CargarUsuarios());
 
 		}

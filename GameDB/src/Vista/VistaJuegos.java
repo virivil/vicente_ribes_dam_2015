@@ -148,8 +148,8 @@ public class VistaJuegos extends JPanel {
         //Evento para mostrar en los campos los datos
         list.addListSelectionListener(new ListSelectionListener() {
               public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                 // if(listModel!=null){
-                  if((listModel!=null)&&(list.getSelectedIndex()>-1)){
+
+            	  if((listModel!=null)&&(list.getSelectedIndex()>-1)){
             	  //Cojo el juego seleccionado
                 	  Game game=(Game)listModel.getElementAt(list.getSelectedIndex());
                 	  //Coloco los datos en los campos
