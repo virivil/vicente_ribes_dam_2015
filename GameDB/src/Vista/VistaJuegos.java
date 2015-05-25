@@ -48,8 +48,6 @@ public class VistaJuegos extends JPanel {
 	private JList list;
 	private DefaultListModel listModel;
 	
-	//public static VistaJuegos instance;
-
 	
 	public VistaJuegos() {
 		
@@ -165,14 +163,7 @@ public class VistaJuegos extends JPanel {
 		
 	}
 	
-/**	//singleton para VistaJuegos
-	public static VistaJuegos getInstance() {
-	      if(instance == null) {
-	         instance = new VistaJuegos();
-	      }
-	      return instance;
-	}
-   **/   
+
         
       //Al haber definido el modelo, los datos sobre el JList se realizará sobre el Modelo,
         //no sobre el JList
